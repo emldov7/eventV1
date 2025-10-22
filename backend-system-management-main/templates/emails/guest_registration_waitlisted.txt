@@ -1,0 +1,19 @@
+⏳ Inscription en attente de validation - {{ event.title }}
+
+Bonjour {{ guest_full_name }},
+
+Votre inscription à l'événement "{{ event.title }}" a été placée en liste d'attente.
+
+📅 Détails de l'événement :
+- Date : {{ event.start_date|date:"d/m/Y" }}
+- Heure : {{ event.start_time|time:"H:i" }}
+- Lieu : {{ event.location }}
+
+⏳ Statut : En attente de validation par l'organisateur
+
+L'organisateur examinera votre demande et vous informera de la suite (approbation ou rejet).
+
+Pour toute question, contactez : {{ event.contact_email|default:event.organizer.email }}
+
+Merci de votre patience !
+L'équipe de {{ event.organizer.username|default:"de l'événement" }}

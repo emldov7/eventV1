@@ -1,0 +1,24 @@
+Bonjour {{ recipient_name }},
+
+{{ reminder.title }}
+
+{{ reminder.message }}
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+{% if event.is_virtual %}
+- Type : Événement virtuel
+{% endif %}
+
+{% if registration.user %}
+Votre inscription est confirmée pour cet événement.
+{% else %}
+Votre inscription d'invité est confirmée pour cet événement.
+{% endif %}
+
+Cordialement,
+L'équipe de {{ event.title }}
+
+

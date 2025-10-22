@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remboursement traité</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #17a2b8; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .refund-details { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #17a2b8; }
+        .footer { text-align: center; color: #666; margin-top: 20px; font-size: 12px; }
+        .icon { font-size: 48px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">💳</div>
+            <h1>Remboursement traité</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ guest_full_name }}</strong>,</p>
+            
+            <p>Votre remboursement pour l'événement <strong>"{{ event.title }}"</strong> a été traité avec succès.</p>
+            
+            <div class="refund-details">
+                <h3>💰 Détails :</h3>
+                <ul>
+                    <li><strong>Événement :</strong> {{ event.title }}</li>
+                    <li><strong>Montant remboursé :</strong> {{ refund_amount }}€</li>
+                    <li><strong>Date de traitement :</strong> {{ refund_request.processed_at|date:"j F Y à H:i" }}</li>
+                </ul>
+            </div>
+            
+            <p><strong>Le remboursement sera crédité sur votre compte bancaire dans les 5 à 10 jours ouvrés selon votre banque.</strong></p>
+            
+            <p>Cordialement,<br>
+            <strong>L'équipe Gestion d'Événements</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email confirme le traitement de votre remboursement.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .container { max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; }
+        .notice { background-color: #ffc107; color: #212529; padding: 15px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .participant-info { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .reason { background-color: #e9ecef; padding: 10px; border-radius: 4px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Bonjour <strong>{{ organizer.first_name|default:organizer.username }}</strong>,</p>
+        
+        <div class="notice">
+            <h2>📢 ANNULATION D'INSCRIPTION</h2>
+        </div>
+        
+        <p>Un participant s'est désinscrit de votre événement <strong>{{ event.title }}</strong>.</p>
+        
+        <div class="participant-info">
+            <h3>👤 Informations du participant :</h3>
+            <ul>
+                <li><strong>Nom :</strong> {{ user.first_name }} {{ user.last_name }}</li>
+                <li><strong>Email :</strong> {{ user.email }}</li>
+                <li><strong>Événement :</strong> {{ event.title }}</li>
+                <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y H:i" }}</li>
+            </ul>
+        </div>
+        
+        {% if reason %}
+        <h4>💬 Raison de l'annulation :</h4>
+        <div class="reason">{{ reason }}</div>
+        {% endif %}
+        
+        <p><strong>💰 Remboursement :</strong> {{ registration.price_paid }}€ 
+        {% if registration.price_paid > 0 %}<em>(en cours de traitement)</em>{% endif %}</p>
+        
+        <p>Vous pouvez gérer les remboursements depuis votre tableau de bord organisateur.</p>
+        
+        <p>Cordialement,<br><em>Le système de gestion d'événements</em></p>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

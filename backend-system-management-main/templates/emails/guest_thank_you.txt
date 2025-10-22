@@ -1,0 +1,29 @@
+Merci pour votre participation
+
+Bonjour {{ guest_full_name }},
+
+Merci d'avoir participé à l'événement "{{ event.title }}" !
+
+Nous espérons que vous avez passé un excellent moment et que l'événement a répondu à vos attentes.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+
+N'hésitez pas à nous faire part de vos commentaires et suggestions pour améliorer nos futurs événements.
+
+À bientôt !
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

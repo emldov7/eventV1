@@ -1,0 +1,61 @@
+🎬 REDIFFUSION DISPONIBLE
+============================
+
+Votre événement virtuel est maintenant disponible en replay !
+
+ÉVÉNEMENT : {{ event.title }}
+=====================================
+📅 Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+📍 Type : Événement virtuel
+🎯 Plateforme : {{ virtual_event.platform|title }}
+{% if event.organizer %}👤 Organisateur : {{ event.organizer.get_full_name|default:event.organizer.username }}{% endif %}
+
+🎥 REDIFFUSION DISPONIBLE
+============================
+L'enregistrement de votre événement est maintenant disponible pour visionnage.
+
+{% if virtual_event.recording_url %}
+Lien de rediffusion : {{ virtual_event.recording_url }}
+
+📺 Regarder la rediffusion : {{ virtual_event.recording_url }}
+{% endif %}
+
+{% if virtual_event.access_instructions %}
+📋 INSTRUCTIONS D'ACCÈS
+========================
+{{ virtual_event.access_instructions }}
+{% endif %}
+
+{% if virtual_event.recording_expires_at %}
+⏰ DURÉE DE DISPONIBILITÉ
+==========================
+Cette rediffusion sera disponible jusqu'au {{ virtual_event.recording_expires_at|date:"d/m/Y à H:i" }}.
+
+N'oubliez pas de la regarder avant qu'elle expire !
+{% endif %}
+
+{% if virtual_event.technical_requirements %}
+💻 EXIGENCES TECHNIQUES
+========================
+{{ virtual_event.technical_requirements }}
+{% endif %}
+
+💡 CONSEILS POUR UNE MEILLEURE EXPÉRIENCE
+==========================================
+• Assurez-vous d'avoir une connexion internet stable
+• Utilisez un navigateur moderne (Chrome, Firefox, Safari, Edge)
+• Fermez les autres applications pour optimiser les performances
+• Utilisez des écouteurs pour une meilleure qualité audio
+
+PARTAGEZ VOTRE EXPÉRIENCE
+==========================
+👍 J'ai aimé
+💬 Laisser un commentaire
+📤 Partager
+
+---
+Merci d'avoir participé à cet événement !
+
+Si vous avez des questions, n'hésitez pas à contacter l'organisateur.
+
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription en Liste d'Attente</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #FF9800; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+        .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; }
+        .info-box { background: #e3f2fd; border-left: 4px solid #2196F3; padding: 15px; margin: 20px 0; }
+        .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏳ Inscription en Liste d'Attente</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ guest_name }}</strong>,</p>
+            
+            <p>Votre inscription à l'événement <strong>{{ event.title }}</strong> a été reçue et placée en liste d'attente.</p>
+            
+            <div class="info-box">
+                <h3>ℹ️ Pourquoi êtes-vous en liste d'attente ?</h3>
+                <p>L'événement a atteint sa capacité maximale, mais nous avons activé la liste d'attente. Cela signifie que vous serez automatiquement inscrit dès qu'une place se libère.</p>
+            </div>
+            
+            <h3>📅 Détails de l'événement :</h3>
+            <ul>
+                <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y" }}</li>
+                <li><strong>Heure :</strong> {{ event.start_date|date:"H:i" }}</li>
+                <li><strong>Lieu :</strong> {{ event.location }}</li>
+                <li><strong>Adresse :</strong> {{ event.address }}</li>
+            </ul>
+            
+            <h3>📋 Prochaines étapes :</h3>
+            <ol>
+                <li>Nous examinerons votre inscription</li>
+                <li>Vous recevrez un email de confirmation dès qu'une place sera disponible</li>
+                <li>Votre QR-code sera généré automatiquement</li>
+            </ol>
+            
+            <p><strong>Ne vous inquiétez pas !</strong> Nous vous tiendrons informé de l'évolution de votre inscription.</p>
+            
+            <p>Si vous avez des questions, contactez-nous à : <strong>{{ event.contact_email }}</strong></p>
+            
+            <p>Cordialement,<br>
+            <strong>L'équipe {{ event.title }}</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email a été envoyé à {{ guest_email }}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

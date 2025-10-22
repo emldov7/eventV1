@@ -1,0 +1,21 @@
+❌ REMBOURSEMENT REJETÉ
+
+Bonjour {{ user.username }},
+
+Votre demande de remboursement pour l'événement "{{ event.title }}" a été rejetée.
+
+{% if reason %}
+Raison du rejet : {{ reason }}
+{% endif %}
+
+Si vous pensez qu'il y a eu une erreur ou si vous souhaitez discuter de cette décision, veuillez nous contacter directement.
+
+Nous vous remercions de votre compréhension.
+
+Cordialement,
+L'équipe de gestion d'événements
+
+---
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+
+

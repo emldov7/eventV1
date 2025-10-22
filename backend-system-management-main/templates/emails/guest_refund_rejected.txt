@@ -1,0 +1,27 @@
+Demande de remboursement rejetée
+
+Bonjour {{ guest_full_name }},
+
+Votre demande de remboursement pour l'événement "{{ event.title }}" a été rejetée.
+
+Détails :
+- Événement : {{ event.title }}
+- Montant demandé : {{ refund_amount }}€
+- Raison du rejet : {{ reason }}
+
+Si vous avez des questions ou souhaitez contester cette décision, contactez l'organisateur de l'événement.
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

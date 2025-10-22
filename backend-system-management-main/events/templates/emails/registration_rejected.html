@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription refusée - {{ event.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f8d7da; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .content { background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .event-details { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .warning { background-color: #ffeaa7; color: #856404; padding: 10px; border-radius: 5px; border: 1px solid #ffd93d; margin: 15px 0; }
+        .refund-info { background-color: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; border: 1px solid #bee5eb; margin: 15px 0; }
+        .footer { margin-top: 20px; padding: 15px; text-align: center; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>❌ Inscription refusée</h2>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>Nous vous informons que votre inscription à l'événement "<strong>{{ event.title }}</strong>" a été refusée par l'organisateur.</p>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement</h3>
+                <ul>
+                    <li><strong>Titre :</strong> {{ event.title }}</li>
+                    <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y à H:i" }}</li>
+                    <li><strong>Lieu :</strong> {{ event.location }}</li>
+                </ul>
+            </div>
+            
+            {% if reason %}
+            <div class="warning">
+                <strong>Motif du refus :</strong> {{ reason }}
+            </div>
+            {% endif %}
+            
+            <div class="refund-info">
+                <strong>💰 Remboursement :</strong> Votre paiement sera remboursé automatiquement dans les prochains jours ouvrables.
+            </div>
+            
+            <p>Si vous avez des questions concernant cette décision, n'hésitez pas à contacter directement l'organisateur.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Cordialement,<br>L'équipe de gestion des événements</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

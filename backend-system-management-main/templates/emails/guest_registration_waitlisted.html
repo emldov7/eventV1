@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription en liste d'attente</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #FF9800; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
+        .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; }
+        .highlight { background: #fff3e0; padding: 15px; border-left: 4px solid #FF9800; margin: 15px 0; }
+        .footer { text-align: center; margin-top: 20px; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏳ Inscription en liste d'attente</h1>
+            <h2>{{ event.title }}</h2>
+        </div>
+        
+        <div class="content">
+            <p><strong>Bonjour {{ guest_full_name }},</strong></p>
+            
+            <p>Votre inscription à l'événement "{{ event.title }}" a été placée en liste d'attente.</p>
+            
+            <div class="highlight">
+                <h3>📅 Détails de l'événement :</h3>
+                <ul>
+                    <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y" }}</li>
+                    <li><strong>Heure :</strong> {{ event.start_time|time:"H:i" }}</li>
+                    <li><strong>Lieu :</strong> {{ event.location }}</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <h3>⏳ Statut :</h3>
+                <p><strong>En attente de validation par l'organisateur</strong></p>
+                <p>L'organisateur examinera votre demande et vous informera de la suite (approbation ou rejet).</p>
+            </div>
+            
+            <p>Pour toute question, contactez : <strong>{{ event.contact_email|default:event.organizer.email }}</strong></p>
+            
+            <p>Merci de votre patience !</p>
+        </div>
+        
+        <div class="footer">
+            <p>L'équipe de {{ event.organizer.username|default:"de l'événement" }}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+⏳ Inscription en Liste d'Attente
+
+Bonjour {{ guest_name }},
+
+Votre inscription à l'événement "{{ event.title }}" a été reçue et placée en liste d'attente.
+
+ℹ️ Pourquoi êtes-vous en liste d'attente ?
+L'événement a atteint sa capacité maximale, mais nous avons activé la liste d'attente. Cela signifie que vous serez automatiquement inscrit dès qu'une place se libère.
+
+📅 Détails de l'événement :
+- Date : {{ event.start_date|date:"d/m/Y" }}
+- Heure : {{ event.start_date|date:"H:i" }}
+- Lieu : {{ event.location }}
+- Adresse : {{ event.address }}
+
+📋 Prochaines étapes :
+1. Nous examinerons votre inscription
+2. Vous recevrez un email de confirmation dès qu'une place sera disponible
+3. Votre QR-code sera généré automatiquement
+
+Ne vous inquiétez pas ! Nous vous tiendrons informé de l'évolution de votre inscription.
+
+Si vous avez des questions, contactez-nous à : {{ event.contact_email }}
+
+Cordialement,
+L'équipe {{ event.title }}
+
+---
+Cet email a été envoyé à {{ guest_email }}
+
+
+
+
+
+
+
+
+
+
+
+

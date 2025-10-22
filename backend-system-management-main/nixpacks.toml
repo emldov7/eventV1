@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["python3", "gcc", "libmysqlclient.dev"]
+
+[phases.install]
+cmds = [
+    "python -m venv --copies /opt/venv",
+    ". /opt/venv/bin/activate && pip install --upgrade pip",
+    ". /opt/venv/bin/activate && pip install -r requirements.txt"
+]
+
+[start]
+cmd = "gunicorn event_management.wsgi:application --bind 0.0.0.0:$PORT --workers 3 --timeout 120 --access-logfile - --error-logfile - --log-level info --preload"

@@ -1,0 +1,33 @@
+Rappel : Votre événement virtuel
+
+Bonjour {{ guest_full_name }},
+
+Rappel : Votre événement virtuel "{{ event.title }}" commence bientôt.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Type : Événement virtuel
+
+Temps restant : {{ time_until_event }}
+
+Informations de connexion :
+- Meeting ID : {{ virtual_event.meeting_id|default:"À définir" }}
+- Mot de passe : {{ virtual_event.meeting_password|default:"À définir" }}
+
+Préparez-vous et rejoignez la réunion à l'heure !
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

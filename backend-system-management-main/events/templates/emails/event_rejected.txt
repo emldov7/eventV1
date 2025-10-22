@@ -1,0 +1,28 @@
+❌ ÉVÉNEMENT REJETÉ
+
+Bonjour {{ organizer.first_name|default:organizer.username }},
+
+Nous regrettons de vous informer que votre événement a été REJETÉ par notre équipe de modération.
+
+DÉTAILS DE L'ÉVÉNEMENT :
+- Titre : {{ event.title }}
+- Date prévue : {{ event.start_date|date:"d/m/Y H:i" }}
+- Lieu : {{ event.location|default:"Non spécifié" }}
+- Prix : ${{ event.price }}
+- Date de création : {{ event.created_at|date:"d/m/Y H:i" }}
+
+RAISON DU REJET :
+{{ reason }}
+
+Si vous pensez qu'il y a eu une erreur ou si vous souhaitez contester cette décision, vous pouvez :
+
+- Nous contacter directement pour plus d'informations
+- Modifier votre événement selon nos recommandations
+- Faire appel de cette décision dans un délai de 30 jours
+
+Nous restons à votre disposition pour toute question et pour vous aider à créer des événements conformes à nos standards.
+
+Cordialement,
+Équipe de modération des événements
+Date de rejet : {{ rejection_date|date:"d/m/Y H:i" }}
+Admin : {{ admin_user.username }}

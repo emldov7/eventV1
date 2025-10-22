@@ -1,0 +1,20 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Nous vous informons que l'événement "{{ event.title }}" prévu le {{ event.start_date|date:"j F Y à H:i" }} a été annulé.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date prévue : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+- Organisateur : {{ event.organizer.get_full_name|default:event.organizer.username|default:event.organizer }}
+
+{% if reason %}
+Raison de l'annulation : {{ reason }}
+{% endif %}
+
+Si vous aviez payé pour cet événement, un remboursement sera traité automatiquement dans les plus brefs délais.
+
+Nous nous excusons pour ce désagrément et vous remercions de votre compréhension.
+
+Cordialement,
+L'équipe Gestion d'Événements

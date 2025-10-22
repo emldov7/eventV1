@@ -1,0 +1,19 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Excellente nouvelle ! Votre inscription à l'événement "{{ event.title }}" a été approuvée par l'organisateur.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+- Prix : {{ event.price|floatformat:2 }}€
+
+Votre billet (QR code) est maintenant disponible. Vous le trouverez en pièce jointe de cet email ou dans votre espace personnel.
+
+IMPORTANT : Présentez votre QR code à l'entrée de l'événement pour confirmer votre présence.
+
+Nous avons hâte de vous voir à l'événement !
+
+Cordialement,
+L'équipe de gestion des événements
+

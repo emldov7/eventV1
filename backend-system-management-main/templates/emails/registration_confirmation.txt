@@ -1,0 +1,30 @@
+Confirmation d'inscription - {{ event.title }}
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre inscription à l'événement "{{ event.title }}" a été confirmée avec succès !
+
+Détails de l'événement :
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+- Type de billet : {{ registration.ticket_type.name|default:"Billet standard" }}
+- Prix facturé : {{ registration.price_paid|floatformat:2 }} €
+
+Votre billet QR Code :
+{% if qr_url %}
+{{ qr_url }}
+{% else %}
+QR Code en cours de génération...
+{% endif %}
+
+⚠️ Important : Conservez ce billet en lieu sûr. Il sera nécessaire pour accéder à l'événement.
+
+Si vous avez des questions, n'hésitez pas à contacter l'organisateur.
+
+Cordialement,
+L'équipe de gestion d'événements
+
+---
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+
+

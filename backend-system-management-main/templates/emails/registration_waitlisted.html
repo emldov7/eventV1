@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription en attente de validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #ff9800; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
+        .event-details { background: white; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .status { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏳ Inscription en attente de validation</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>Votre inscription à l'événement <strong>{{ event.title }}</strong> a été reçue et est actuellement en attente de validation par l'organisateur.</p>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement :</h3>
+                <p><strong>Date :</strong> {{ event.start_date|date:"d/m/Y à H:i" }}</p>
+                <p><strong>Lieu :</strong> {{ event.location }}</p>
+                <p><strong>Prix :</strong> {{ event.price }} $US</p>
+            </div>
+            
+            <div class="status">
+                <h3>📋 Statut actuel :</h3>
+                <p><strong>Votre inscription est en liste d'attente</strong></p>
+                <p>L'organisateur de l'événement examinera votre demande et vous informera de la suite.</p>
+            </div>
+            
+            <p><strong>💡 Que se passe-t-il maintenant ?</strong></p>
+            <ul>
+                <li>L'organisateur examine votre inscription</li>
+                <li>Vous recevrez un email de confirmation ou de rejet</li>
+                <li>En cas de confirmation, vous recevrez votre billet QR code</li>
+            </ul>
+            
+            <p>Nous vous tiendrons informé de l'évolution de votre demande.</p>
+            
+            <p>Cordialement,<br>L'équipe de gestion d'événements</p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email a été envoyé automatiquement. Merci de ne pas y répondre.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

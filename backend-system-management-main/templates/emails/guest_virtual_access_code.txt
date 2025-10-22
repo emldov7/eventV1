@@ -1,0 +1,39 @@
+Code d'accès à votre événement virtuel
+
+Bonjour {{ guest_full_name }},
+
+Voici les informations d'accès pour votre événement virtuel "{{ event.title }}".
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Type : Événement virtuel
+
+Informations de connexion :
+- Meeting ID : {{ virtual_event.meeting_id|default:"À définir" }}
+- Mot de passe : {{ virtual_event.meeting_password|default:"À définir" }}
+- Lien de connexion : {{ virtual_event.meeting_url|default:"À définir" }}
+
+Temps restant jusqu'à l'événement : {{ time_until_event }}
+
+Instructions :
+1. Assurez-vous d'avoir une connexion internet stable
+2. Testez votre microphone et caméra avant l'événement
+3. Rejoignez la réunion 5 minutes avant le début
+
+Si vous avez des questions, contactez l'organisateur.
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

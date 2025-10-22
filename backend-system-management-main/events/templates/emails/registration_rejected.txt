@@ -1,0 +1,25 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Nous vous informons que votre inscription à l'événement "{{ event.title }}" a été refusée par l'organisateur.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+
+{% if reason %}
+Motif du refus : {{ reason }}
+{% endif %}
+
+Votre paiement sera remboursé automatiquement dans les prochains jours ouvrables.
+
+Si vous avez des questions concernant cette décision, n'hésitez pas à contacter directement l'organisateur.
+
+Cordialement,
+L'équipe de gestion des événements
+
+
+
+
+
+

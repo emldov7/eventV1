@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événement annulé</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #dc3545; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .event-details { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #dc3545; }
+        .footer { text-align: center; color: #666; margin-top: 20px; font-size: 12px; }
+        .icon { font-size: 48px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">❌</div>
+            <h1>Événement annulé</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>Nous vous informons que l'événement <strong>"{{ event.title }}"</strong> prévu le <strong>{{ event.start_date|date:"j F Y à H:i" }}</strong> a été <span style="color: #dc3545;">annulé</span>.</p>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement annulé :</h3>
+                <ul>
+                    <li><strong>Titre :</strong> {{ event.title }}</li>
+                    <li><strong>Date prévue :</strong> {{ event.start_date|date:"j F Y à H:i" }}</li>
+                    <li><strong>Lieu :</strong> {{ event.location }}</li>
+                    <li><strong>Organisateur :</strong> {{ event.organizer.get_full_name|default:event.organizer.username }}</li>
+                </ul>
+                
+                {% if reason %}
+                <div style="background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                    <strong>📝 Raison de l'annulation :</strong><br>
+                    {{ reason }}
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if registration.payment_status == 'paid' %}
+            <div style="background-color: #d1ecf1; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                <h4 style="margin-top: 0; color: #0c5460;">💰 Remboursement</h4>
+                <p>Si vous aviez payé pour cet événement, un remboursement sera traité automatiquement dans les plus brefs délais. Vous recevrez un email de confirmation une fois le remboursement effectué.</p>
+            </div>
+            {% endif %}
+            
+            <p>Nous nous excusons sincèrement pour ce désagrément et vous remercions de votre compréhension.</p>
+            
+            <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
+            
+            <p>Cordialement,<br>
+            <strong>L'équipe Gestion d'Événements</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email a été envoyé automatiquement suite à l'annulation de l'événement.</p>
+        </div>
+    </div>
+</body>
+</html>

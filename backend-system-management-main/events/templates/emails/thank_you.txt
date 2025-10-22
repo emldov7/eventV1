@@ -1,0 +1,6 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Merci d'avoir participé à "{{ event.title }}".
+
+À bientôt !
+

@@ -1,0 +1,29 @@
+Enregistrement disponible
+
+Bonjour {{ guest_full_name }},
+
+L'enregistrement de votre événement virtuel "{{ event.title }}" est maintenant disponible.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Type : Événement virtuel
+
+Lien vers l'enregistrement : {{ recording_url }}
+
+Vous pouvez maintenant revoir l'événement à votre convenance.
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

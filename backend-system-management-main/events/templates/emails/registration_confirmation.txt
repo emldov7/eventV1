@@ -1,0 +1,15 @@
+Confirmation d'inscription
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre inscription à l'événement "{{ event.title }}" est confirmée.
+
+Date: {{ event.start_date|date:"Y-m-d H:i" }}
+Lieu: {{ event.location }}
+
+{% if qr_url %}
+Accédez à votre QR code: {{ qr_url }}
+{% endif %}
+
+Merci et à bientôt !
+

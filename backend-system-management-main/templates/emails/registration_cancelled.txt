@@ -1,0 +1,20 @@
+Annulation d'inscription
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre inscription à l'événement "{{ event.title }}" a été annulée avec succès.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date prévue : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+
+{% if refund_amount %}
+Montant remboursé : {{ refund_amount }}€
+Le remboursement sera traité dans les plus brefs délais.
+{% endif %}
+
+Si vous aviez des questions ou souhaitez vous réinscrire, n'hésitez pas à nous contacter.
+
+Cordialement,
+L'équipe Gestion d'Événements

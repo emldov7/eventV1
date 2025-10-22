@@ -1,0 +1,52 @@
+# ========================================
+# REQUIREMENTS.TXT PRODUCTION RAILWAY - MYSQL
+# ========================================
+# Version optimisée pour Railway avec MySQL
+
+# 🏗️ CORE DJANGO (ESSENTIEL)
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.0
+django-filter==23.3
+django-filter[rest-framework]==23.3
+PyMySQL==1.1.0
+Pillow==10.1.0
+python-decouple==3.8
+djangorestframework-simplejwt==5.3.0
+
+# 📦 UTILITAIRES DE BASE (ESSENTIEL)
+python-dateutil>=2.9.0
+qrcode==7.4.2
+stripe==6.7.0
+
+# 🎥 APIS DE STREAMING (ESSENTIEL)
+requests==2.31.0
+
+# 🔐 AUTHENTIFICATION SOCIALE (ESSENTIEL)
+django-allauth==0.60.1
+requests-oauthlib==1.3.1
+google-auth==2.23.4
+
+# 🤖 INTELLIGENCE ARTIFICIELLE (ESSENTIEL)
+anthropic==0.7.8
+mistralai==1.0.2
+openai==1.3.0
+scikit-learn==1.7.2
+pandas==2.3.2
+joblib==1.5.2
+
+# 📱 SERVICES DE COMMUNICATION (ESSENTIEL)
+twilio==8.10.0
+
+# ⚡ TÂCHES ASYNCHRONES (ESSENTIEL)
+celery==5.3.4
+django-celery-beat==2.5.0
+django-celery-results==2.5.1
+redis==5.0.1
+
+# 🚀 PRODUCTION RAILWAY - MYSQL (ESSENTIEL)
+gunicorn==21.2.0
+whitenoise==6.6.0
+# MySQL pour Railway - PyMySQL est plus simple et compatible
+# mysqlclient==2.2.4  # Problème de compilation sur Railway
+# PyMySQL est déjà inclus plus haut et fonctionne parfaitement

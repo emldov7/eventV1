@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation d'inscription - Événement Virtuel</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .event-details { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #667eea; }
+        .virtual-info { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; margin: 20px 0; border-radius: 10px; }
+        .connection-details { background-color: #e3f2fd; padding: 20px; margin: 20px 0; border-radius: 8px; border: 2px solid #2196f3; }
+        .footer { text-align: center; color: #666; margin-top: 20px; font-size: 12px; }
+        .icon { font-size: 48px; margin-bottom: 10px; }
+        .qr-code { text-align: center; margin: 20px 0; }
+        .qr-code img { max-width: 200px; height: auto; }
+        .button { display: inline-block; padding: 12px 24px; background-color: #2196f3; color: white; text-decoration: none; border-radius: 5px; margin: 10px 0; }
+        .warning { background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">🎥</div>
+            <h1>Événement Virtuel Confirmé !</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>🎉 Félicitations ! Votre inscription à l'événement virtuel <strong>"{{ event.title }}"</strong> a été confirmée avec succès.</p>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement :</h3>
+                <ul>
+                    <li><strong>Titre :</strong> {{ event.title }}</li>
+                    <li><strong>Date :</strong> {{ event.start_date|date:"j F Y à H:i" }} (Heure de Paris)</li>
+                    <li><strong>Durée :</strong> Jusqu'à {{ event.end_date|date:"H:i" }} (Heure de Paris)</li>
+                    <li><strong>Type :</strong> Événement virtuel</li>
+                    <li><strong>Organisateur :</strong> {{ event.organizer.get_full_name|default:event.organizer.username|default:event.organizer }}</li>
+                    {% if event.price %}
+                    <li><strong>Prix :</strong> {{ event.price }}€</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% if event.virtual_details %}
+            <div class="virtual-info">
+                <h3>🎥 Informations de connexion :</h3>
+                <ul>
+                    <li><strong>Plateforme :</strong> 
+                        {% if event.virtual_details.platform == 'youtube_live' %}
+                            YouTube Live
+                        {% elif event.virtual_details.platform == 'zoom' %}
+                            Zoom
+                        {% else %}
+                            {{ event.virtual_details.platform|title }}
+                        {% endif %}
+                    </li>
+                    {% if event.virtual_details.meeting_id %}
+                    <li><strong>ID de réunion :</strong> {{ event.virtual_details.meeting_id }}</li>
+                    {% endif %}
+                    {% if event.virtual_details.meeting_password %}
+                    <li><strong>Mot de passe :</strong> {{ event.virtual_details.meeting_password }}</li>
+                    {% endif %}
+                    {% if event.virtual_details.meeting_url %}
+                    <li><strong>Lien direct :</strong> <a href="{{ event.virtual_details.meeting_url }}" style="color: white; text-decoration: underline;">Cliquer ici pour rejoindre</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            {% if event.virtual_details.access_instructions %}
+            <div class="connection-details">
+                <h4>📋 Instructions d'accès complètes :</h4>
+                <pre style="white-space: pre-wrap; font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6;">{{ event.virtual_details.access_instructions }}</pre>
+            </div>
+            {% endif %}
+
+            {% if event.virtual_details.technical_requirements %}
+            <div class="warning">
+                <h4>⚙️ Exigences techniques :</h4>
+                <p>{{ event.virtual_details.technical_requirements|linebreaks }}</p>
+            </div>
+            {% endif %}
+
+            <div style="background-color: #d1ecf1; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                <h4 style="margin-top: 0; color: #0c5460;">💡 Conseils pour un événement réussi :</h4>
+                <ul>
+                    <li>Testez votre connexion 15 minutes avant le début</li>
+                    <li>Assurez-vous d'avoir un micro et des haut-parleurs fonctionnels</li>
+                    <li>Fermez les applications inutiles pour optimiser les performances</li>
+                    <li>Préparez vos questions à l'avance</li>
+                </ul>
+            </div>
+
+            <p>Nous vous souhaitons un excellent événement virtuel !</p>
+            
+            <p>Cordialement,<br>
+            <strong>L'équipe Gestion d'Événements</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email confirme votre inscription à l'événement virtuel. Conservez-le précieusement.</p>
+        </div>
+    </div>
+</body>
+</html>

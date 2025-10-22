@@ -1,0 +1,21 @@
+✅ REMBOURSEMENT APPROUVÉ
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Nous avons le plaisir de vous informer que votre demande de remboursement a été APPROUVÉE.
+
+DÉTAILS DE L'ÉVÉNEMENT :
+- Événement : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y H:i" }}
+- Lieu : {{ event.location|default:"Non spécifié" }}
+
+MONTANT DU REMBOURSEMENT : {{ refund_amount }}€
+
+Votre remboursement sera traité dans les 5 à 10 jours ouvrables et sera crédité sur votre compte bancaire ou votre mode de paiement original.
+
+Si vous avez des questions concernant ce remboursement, n'hésitez pas à nous contacter.
+
+Merci de votre confiance.
+
+Équipe de gestion des événements
+Date d'approbation : {{ approval_date|date:"d/m/Y H:i" }}

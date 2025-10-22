@@ -1,0 +1,11 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre billet pour l'événement "{{ event.title }}" a été annulé.
+
+Si votre billet était payant, un remboursement sera effectué sous 24 h. Si vous ne le constatez pas dans ce délai, veuillez appeler le (400) 365 3455.
+
+Si vous pensez qu'il s'agit d'une erreur, veuillez répondre à cet email.
+
+— L'équipe organisation
+
+

@@ -1,0 +1,18 @@
+Bonjour {{ guest_full_name }},
+
+Nous regrettons de vous informer que votre inscription à l'événement "{{ event.title }}" a été rejetée.
+
+📅 Détails de l'événement :
+- Date : {{ event.start_date|date:"d/m/Y" }}
+- Heure : {{ event.start_time|time:"H:i" }}
+- Lieu : {{ event.location }}
+
+❌ Statut : Inscription rejetée
+
+Cette décision peut être due à diverses raisons (capacité limitée, critères de sélection, etc.).
+
+Pour toute question ou pour demander des précisions, contactez : {{ event.contact_email|default:event.organizer.email }}
+
+Nous vous remercions de votre intérêt et espérons vous accueillir lors d'un prochain événement.
+
+L'équipe de {{ event.organizer.username|default:"de l'événement" }}

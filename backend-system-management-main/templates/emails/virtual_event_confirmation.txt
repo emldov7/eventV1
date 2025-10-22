@@ -1,0 +1,44 @@
+CONFIRMATION D'INSCRIPTION - ÉVÉNEMENT VIRTUEL
+================================================
+
+Bonjour {{ user.first_name|default:user.username }},
+
+🎉 Félicitations ! Votre inscription à l'événement virtuel "{{ event.title }}" a été confirmée avec succès.
+
+📅 DÉTAILS DE L'ÉVÉNEMENT :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Durée : Jusqu'à {{ event.end_date|date:"H:i" }}
+- Type : Événement virtuel
+- Organisateur : {{ event.organizer.get_full_name|default:event.organizer.username|default:event.organizer }}
+{% if event.price %}- Prix : {{ event.price }}€{% endif %}
+
+🎥 INFORMATIONS DE CONNEXION :
+{% if event.virtual_details %}- Plateforme : {{ event.virtual_details.get_platform_display }}
+{% if event.virtual_details.meeting_id %}- ID de réunion : {{ event.virtual_details.meeting_id }}{% endif %}
+{% if event.virtual_details.meeting_password %}- Mot de passe : {{ event.virtual_details.meeting_password }}{% endif %}
+{% if event.virtual_details.meeting_url %}- Lien direct : {{ event.virtual_details.meeting_url }}{% endif %}{% endif %}
+
+{% if registration.qr_token %}🎫 VOTRE BILLET D'ACCÈS VIRTUEL :
+Code : {{ registration.qr_token }}{% endif %}
+
+{% if event.virtual_details.access_instructions %}📋 INSTRUCTIONS D'ACCÈS :
+{{ event.virtual_details.access_instructions }}{% endif %}
+
+{% if event.virtual_details.technical_requirements %}⚙️ EXIGENCES TECHNIQUES :
+{{ event.virtual_details.technical_requirements }}{% endif %}
+
+💡 CONSEILS POUR UN ÉVÉNEMENT RÉUSSI :
+- Testez votre connexion 15 minutes avant le début
+- Assurez-vous d'avoir un micro et des haut-parleurs fonctionnels
+- Fermez les applications inutiles pour optimiser les performances
+- Préparez vos questions à l'avance
+
+Nous vous souhaitons un excellent événement virtuel !
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+---
+Cet email confirme votre inscription à l'événement virtuel. Conservez-le précieusement.
+

@@ -1,0 +1,27 @@
+DANS 1H : Votre événement commence
+
+Bonjour {{ guest_full_name }},
+
+Votre événement "{{ event.title }}" commence dans 1 heure !
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+
+Préparez-vous et arrivez à l'heure !
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+Code d'accès à votre événement virtuel
+=====================================
+
+Bonjour {{ user.first_name }} {{ user.last_name }},
+
+Votre inscription à l'événement virtuel "{{ event.title }}" a été confirmée !
+
+INFORMATIONS DE L'ÉVÉNEMENT
+----------------------------
+Date et heure : {{ event.start_date|date:"d/m/Y à H:i" }} - {{ event.end_date|date:"H:i" }}
+Plateforme : {{ virtual_event.get_platform_display }}
+{% if virtual_event.meeting_url %}Lien de connexion : {{ virtual_event.meeting_url }}{% endif %}
+
+VOTRE CODE D'ACCÈS
+-------------------
+{{ registration.virtual_access_code }}
+
+Conservez ce code précieusement, vous en aurez besoin pour accéder à l'événement.
+
+{% if virtual_event.meeting_id %}
+INSTRUCTIONS DE CONNEXION
+-------------------------
+ID de réunion : {{ virtual_event.meeting_id }}
+{% if virtual_event.meeting_password %}Mot de passe : {{ virtual_event.meeting_password }}{% endif %}
+Code d'accès : {{ registration.virtual_access_code }}
+{% endif %}
+
+{% if virtual_event.access_instructions %}
+INSTRUCTIONS SUPPLÉMENTAIRES
+----------------------------
+{{ virtual_event.access_instructions }}
+{% endif %}
+
+{% if virtual_event.technical_requirements %}
+EXIGENCES TECHNIQUES
+--------------------
+{{ virtual_event.technical_requirements }}
+{% endif %}
+
+DÉCOMPTE JUSQU'À L'ÉVÉNEMENT
+-----------------------------
+L'événement commence dans {{ time_until_event }}
+
+IMPORTANT
+---------
+- Testez votre connexion internet avant l'événement
+- Assurez-vous que votre microphone et caméra fonctionnent
+- Rejoignez la réunion 5 minutes avant le début
+- Gardez ce code d'accès à portée de main
+
+Si vous avez des questions ou rencontrez des problèmes techniques, n'hésitez pas à contacter l'organisateur à l'adresse : {{ event.contact_email }}
+
+Nous vous souhaitons un excellent événement !
+
+---
+Cet email a été envoyé automatiquement par le système de gestion d'événements.
+Ne répondez pas à cet email.

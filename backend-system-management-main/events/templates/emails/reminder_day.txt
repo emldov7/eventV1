@@ -1,0 +1,9 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+C'est aujourd'hui ! Votre événement "{{ event.title }}" commence bientôt.
+
+Heure: {{ event.start_date|date:"Y-m-d H:i" }}
+Lieu: {{ event.location }}
+
+À très vite !
+

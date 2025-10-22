@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remboursement Traité</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #4F46E5, #0891B2); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
+        .amount { font-size: 24px; font-weight: bold; color: #16A34A; text-align: center; margin: 20px 0; }
+        .button { display: inline-block; background: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Remboursement Traité !</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour {{ user.first_name|default:user.username }},</p>
+            
+            <p>Votre demande de remboursement pour l'événement <strong>{{ event.title }}</strong> a été traitée avec succès !</p>
+            
+            <div class="amount">
+                Montant remboursé : {{ refund_amount }}€
+            </div>
+            
+            <p>Le remboursement sera effectué dans les prochains jours ouvrables selon les modalités de votre banque.</p>
+            
+            <p><strong>Détails du remboursement :</strong></p>
+            <ul>
+                <li><strong>Événement :</strong> {{ event.title }}</li>
+                <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y" }}</li>
+                <li><strong>Montant :</strong> {{ refund_amount }}€</li>
+                <li><strong>Statut :</strong> Traité</li>
+            </ul>
+            
+            <p>Si vous avez des questions concernant ce remboursement, n'hésitez pas à nous contacter.</p>
+            
+            <p>Cordialement,<br>
+            L'équipe {{ event.organizer.first_name|default:event.organizer.username }}</p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email a été envoyé automatiquement. Merci de ne pas y répondre.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,8 @@
+<p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+<p>C'est aujourd'hui ! Votre événement <strong>{{ event.title }}</strong> commence bientôt.</p>
+<p>
+  Heure: {{ event.start_date|date:"Y-m-d H:i" }}<br/>
+  Lieu: {{ event.location }}
+</p>
+<p>À très vite !</p>
+

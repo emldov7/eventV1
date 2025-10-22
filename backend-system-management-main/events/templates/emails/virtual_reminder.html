@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rappel : Votre événement virtuel commence bientôt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #ffc107;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #ffc107;
+            margin: 0;
+            font-size: 24px;
+        }
+        .urgent {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .urgent h2 {
+            color: #856404;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .event-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .access-code {
+            background-color: #e8f5e8;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .access-code h2 {
+            color: #28a745;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #155724;
+            background-color: #d4edda;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+        .checklist {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .checklist h3 {
+            color: #0c5460;
+            margin-top: 0;
+        }
+        .checklist ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .checklist li {
+            margin: 5px 0;
+        }
+        .time-remaining {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .time-remaining h3 {
+            color: #721c24;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏰ Rappel : Votre événement virtuel commence bientôt !</h1>
+        </div>
+
+        <p>Bonjour <strong>{{ user.first_name }} {{ user.last_name }}</strong>,</p>
+
+        <div class="urgent">
+            <h2>🚨 ATTENTION : L'événement commence dans {{ time_until_event }} !</h2>
+            <p>Préparez-vous à rejoindre votre événement virtuel !</p>
+        </div>
+
+        <div class="event-info">
+            <h3>📅 Détails de l'événement</h3>
+            <p><strong>Événement :</strong> {{ event.title }}</p>
+            <p><strong>Date et heure :</strong> {{ event.start_date|date:"d/m/Y à H:i" }} - {{ event.end_date|date:"H:i" }}</p>
+            <p><strong>Plateforme :</strong> {{ virtual_event.get_platform_display }}</p>
+            {% if virtual_event.meeting_url %}
+            <p><strong>Lien de connexion :</strong> <a href="{{ virtual_event.meeting_url }}" class="btn">Rejoindre maintenant</a></p>
+            {% endif %}
+        </div>
+
+        <div class="access-code">
+            <h2>🔑 Votre code d'accès</h2>
+            <div class="code">{{ registration.virtual_access_code }}</div>
+            <p>Gardez ce code à portée de main !</p>
+        </div>
+
+        {% if virtual_event.meeting_id %}
+        <div class="event-info">
+            <h3>📋 Informations de connexion</h3>
+            <p><strong>ID de réunion :</strong> {{ virtual_event.meeting_id }}</p>
+            {% if virtual_event.meeting_password %}
+            <p><strong>Mot de passe :</strong> {{ virtual_event.meeting_password }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="checklist">
+            <h3>✅ Liste de vérification avant l'événement</h3>
+            <ul>
+                <li>✅ Votre inscription est confirmée</li>
+                <li>✅ Votre code d'accès est prêt</li>
+                <li>🔍 Vérifiez votre connexion internet</li>
+                <li>🔍 Testez votre microphone et caméra</li>
+                <li>🔍 Fermez les applications inutiles</li>
+                <li>🔍 Préparez un environnement calme</li>
+                <li>🔍 Ayez de quoi prendre des notes</li>
+            </ul>
+        </div>
+
+        <div class="time-remaining">
+            <h3>⏱️ Temps restant</h3>
+            <p><strong>{{ time_until_event }}</strong></p>
+            <p>Rejoignez la réunion 5 minutes avant le début pour éviter tout problème technique.</p>
+        </div>
+
+        {% if virtual_event.access_instructions %}
+        <div class="event-info">
+            <h3>📖 Instructions d'accès</h3>
+            <p>{{ virtual_event.access_instructions|linebreaks }}</p>
+        </div>
+        {% endif %}
+
+        <p><strong>Besoin d'aide ?</strong> Contactez l'organisateur à : <strong>{{ event.contact_email }}</strong></p>
+
+        <p>Nous vous souhaitons un excellent événement !</p>
+
+        <div class="footer">
+            <p>Cet email a été envoyé automatiquement par le système de gestion d'événements.</p>
+            <p>Ne répondez pas à cet email.</p>
+        </div>
+    </div>
+</body>
+</html>

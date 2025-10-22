@@ -1,0 +1,24 @@
+🎉 Remboursement Traité !
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre demande de remboursement pour l'événement "{{ event.title }}" a été traitée avec succès !
+
+Montant remboursé : {{ refund_amount }}€
+
+Le remboursement sera effectué dans les prochains jours ouvrables selon les modalités de votre banque.
+
+Détails du remboursement :
+- Événement : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y" }}
+- Montant : {{ refund_amount }}€
+- Statut : Traité
+
+Si vous avez des questions concernant ce remboursement, n'hésitez pas à nous contacter.
+
+Cordialement,
+L'équipe {{ event.organizer.first_name|default:event.organizer.username|default:event.organizer }}
+
+---
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+

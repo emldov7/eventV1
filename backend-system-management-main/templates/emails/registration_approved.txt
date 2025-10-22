@@ -1,0 +1,26 @@
+✅ Inscription approuvée !
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Excellente nouvelle ! Votre inscription en liste d'attente pour l'événement "{{ event.title }}" a été approuvée par l'organisateur.
+
+Détails de l'événement :
+- Date : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+- Prix : {{ event.price }}€
+
+Votre billet QR Code :
+
+{% if registration.qr_token %}
+Code : {{ registration.qr_token }}
+{% endif %}
+
+⚠️ Important : Conservez ce billet en lieu sûr. Il sera nécessaire pour accéder à l'événement.
+
+Si vous avez des questions, n'hésitez pas à contacter l'organisateur.
+
+Cordialement,
+L'équipe de gestion d'événements
+
+---
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.

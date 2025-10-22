@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ reminder.title }} - {{ event.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1976d2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+        }
+        .event-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #1976d2;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        .highlight {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ reminder.title }}</h1>
+        <p>{{ event.title }}</p>
+    </div>
+    
+    <div class="content">
+        <p>Bonjour <strong>{{ recipient_name }}</strong>,</p>
+        
+        <div class="highlight">
+            <p>{{ reminder.message|linebreaks }}</p>
+        </div>
+        
+        <div class="event-details">
+            <h3>📅 Détails de l'événement</h3>
+            <p><strong>Titre :</strong> {{ event.title }}</p>
+            <p><strong>Date :</strong> {{ event.start_date|date:"d/m/Y à H:i" }}</p>
+            <p><strong>Lieu :</strong> {{ event.location }}</p>
+            {% if event.is_virtual %}
+            <p><strong>Type :</strong> Événement virtuel</p>
+            {% endif %}
+        </div>
+        
+        <div class="highlight">
+            {% if registration.user %}
+            <p>✅ Votre inscription est confirmée pour cet événement.</p>
+            {% else %}
+            <p>✅ Votre inscription d'invité est confirmée pour cet événement.</p>
+            {% endif %}
+        </div>
+        
+        <p>Nous avons hâte de vous voir à cet événement !</p>
+    </div>
+    
+    <div class="footer">
+        <p>Cordialement,<br>L'équipe de {{ event.title }}</p>
+        <p><em>Ce message a été envoyé par l'organisateur de l'événement.</em></p>
+    </div>
+</body>
+</html>
+
+

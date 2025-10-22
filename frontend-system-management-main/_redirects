@@ -1,0 +1,4 @@
+# Redirections pour SPA (Single Page Application)
+# Toutes les routes non trouvées redirigent vers index.html
+
+/*    /index.html   200

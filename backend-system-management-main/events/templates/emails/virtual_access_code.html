@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code d'accès à votre événement virtuel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #007bff;
+            margin: 0;
+            font-size: 24px;
+        }
+        .event-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .access-code {
+            background-color: #e8f5e8;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .access-code h2 {
+            color: #28a745;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #155724;
+            background-color: #d4edda;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+        .warning {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #721c24;
+        }
+        .countdown {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .countdown h3 {
+            color: #0c5460;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {% if stream_just_launched %}
+                <h1>🎥 Stream lancé ! - Rejoignez votre événement virtuel</h1>
+            {% else %}
+                <h1>🎥 Code d'accès à votre événement virtuel</h1>
+            {% endif %}
+        </div>
+
+        <p>Bonjour <strong>{{ user.first_name }} {{ user.last_name }}</strong>,</p>
+
+        {% if stream_just_launched %}
+            <p>🎉 <strong>Le stream est maintenant lancé !</strong> Vous pouvez rejoindre votre événement virtuel <strong>"{{ event.title }}"</strong> !</p>
+        {% else %}
+            <p>Votre inscription à l'événement virtuel <strong>"{{ event.title }}"</strong> a été confirmée !</p>
+        {% endif %}
+
+        <div class="event-info">
+            <h3>📅 Informations de l'événement</h3>
+            <p><strong>Date et heure :</strong> {{ event.start_date|date:"d/m/Y à H:i" }} - {{ event.end_date|date:"H:i" }}</p>
+            <p><strong>Plateforme :</strong> {{ virtual_event.get_platform_display }}</p>
+            {% if virtual_event.meeting_url %}
+            <p><strong>Lien de connexion :</strong> <a href="{{ virtual_event.meeting_url }}" class="btn">Rejoindre la réunion</a></p>
+            {% endif %}
+        </div>
+
+        <div class="access-code">
+            <h2>🔑 Votre code d'accès</h2>
+            <div class="code">{{ registration.virtual_access_code }}</div>
+            <p>Conservez ce code précieusement, vous en aurez besoin pour accéder à l'événement.</p>
+        </div>
+
+        {% if virtual_event.meeting_id %}
+        <div class="instructions">
+            <h3>📋 Instructions de connexion</h3>
+            <p><strong>ID de réunion :</strong> {{ virtual_event.meeting_id }}</p>
+            {% if virtual_event.meeting_password %}
+            <p><strong>Mot de passe :</strong> {{ virtual_event.meeting_password }}</p>
+            {% endif %}
+            <p><strong>Code d'accès :</strong> {{ registration.virtual_access_code }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Section des détails de connexion - SEULEMENT si le stream est lancé -->
+        {% if virtual_event.meeting_id and virtual_event.meeting_url %}
+        <div class="instructions">
+            <h3>🔗 Détails de connexion</h3>
+            <p><strong>ID de réunion :</strong> <span class="code">{{ virtual_event.meeting_id }}</span></p>
+            
+            {% if virtual_event.meeting_password %}
+                <p><strong>Mot de passe :</strong> <span class="code">{{ virtual_event.meeting_password }}</span></p>
+            {% else %}
+                <p><strong>Mot de passe :</strong> <span style="color: #dc3545;">Non requis</span></p>
+            {% endif %}
+            
+            <p><strong>Code d'accès personnel :</strong> <span class="code">{{ registration.virtual_access_code }}</span></p>
+            
+            <p><strong>Lien direct :</strong> <a href="{{ virtual_event.meeting_url }}" class="btn" target="_blank">🔗 Rejoindre la réunion</a></p>
+        </div>
+        {% else %}
+        <div class="warning">
+            <h3>⏳ En attente du lancement du stream</h3>
+            <p><strong>Le stream n'est pas encore lancé par l'organisateur.</strong></p>
+            <p>Vous recevrez un email avec les identifiants de connexion dès que l'organisateur lancera le stream.</p>
+            <p>En attendant, préparez-vous et testez votre équipement technique.</p>
+        </div>
+        {% endif %}
+
+        {% if virtual_event.access_instructions %}
+        <div class="instructions">
+            <h3>📖 Instructions supplémentaires</h3>
+            <p>{{ virtual_event.access_instructions|linebreaks }}</p>
+        </div>
+        {% endif %}
+
+        {% if virtual_event.technical_requirements %}
+        <div class="instructions">
+            <h3>💻 Exigences techniques</h3>
+            <p>{{ virtual_event.technical_requirements|linebreaks }}</p>
+        </div>
+        {% endif %}
+
+        <div class="countdown">
+            <h3>⏰ Décompte jusqu'à l'événement</h3>
+            <p>L'événement commence dans <strong>{{ time_until_event }}</strong></p>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Important</h3>
+            <ul>
+                <li>Testez votre connexion internet avant l'événement</li>
+                <li>Assurez-vous que votre microphone et caméra fonctionnent</li>
+                <li>Rejoignez la réunion 5 minutes avant le début</li>
+                <li>Gardez ce code d'accès à portée de main</li>
+            </ul>
+        </div>
+
+        <p>Si vous avez des questions ou rencontrez des problèmes techniques, n'hésitez pas à contacter l'organisateur à l'adresse : <strong>{{ event.contact_email }}</strong></p>
+
+        <p>Nous vous souhaitons un excellent événement !</p>
+
+        <div class="footer">
+            <p>Cet email a été envoyé automatiquement par le système de gestion d'événements.</p>
+            <p>Ne répondez pas à cet email.</p>
+        </div>
+    </div>
+</body>
+</html>

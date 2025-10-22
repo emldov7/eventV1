@@ -1,0 +1,28 @@
+Bonjour {{ user.first_name }},
+
+Rappel : Votre événement virtuel commence dans {{ hours_before }} heure(s) !
+
+📅 Événement : {{ event.title }}
+🌐 Plateforme : {{ virtual_event.get_platform_display }}
+🕐 Date et heure : {{ event.start_date|date:"d/m/Y à H:i" }}
+🔑 Code d'accès : {{ virtual_event.get_access_code }}
+
+{% if virtual_event.meeting_url %}
+🔗 Lien de connexion : {{ virtual_event.meeting_url }}
+{% endif %}
+
+{% if virtual_event.access_instructions %}
+📋 Instructions d'accès :
+{{ virtual_event.access_instructions }}
+{% endif %}
+
+{% if virtual_event.technical_requirements %}
+⚙️ Exigences techniques :
+{{ virtual_event.technical_requirements }}
+{% endif %}
+
+Préparez-vous et connectez-vous quelques minutes avant le début de l'événement.
+
+À bientôt !
+
+L'équipe {{ event.organizer.first_name }} {{ event.organizer.last_name }}

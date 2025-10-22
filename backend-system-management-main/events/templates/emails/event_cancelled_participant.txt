@@ -1,0 +1,28 @@
+⚠️ ÉVÉNEMENT ANNULE
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Nous regrettons de vous informer que l'événement auquel vous étiez inscrit a été ANNULE.
+
+DÉTAILS DE L'ÉVÉNEMENT :
+- Titre : {{ event.title }}
+- Date prévue : {{ event.start_date|date:"d/m/Y H:i" }}
+- Lieu : {{ event.location|default:"Non spécifié" }}
+- Organisateur : {{ event.organizer.username }}
+
+INFORMATIONS IMPORTANTES :
+- Raison de l'annulation : {{ reason }}
+- Date d'annulation : {{ cancellation_date|date:"d/m/Y H:i" }}
+
+QUE SE PASSE-T-IL MAINTENANT ?
+
+- Votre inscription est automatiquement annulée
+- Si vous avez payé, un remboursement sera traité automatiquement
+- Vous recevrez une confirmation de remboursement par email
+- Vous pouvez consulter d'autres événements sur notre plateforme
+
+Nous nous excusons pour ce désagrément et vous remercions de votre compréhension.
+
+Cordialement,
+Équipe de gestion des événements
+Date d'annulation : {{ cancellation_date|date:"d/m/Y H:i" }}

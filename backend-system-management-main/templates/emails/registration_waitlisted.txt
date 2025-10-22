@@ -1,0 +1,28 @@
+Inscription en attente de validation - {{ event.title }}
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre inscription à l'événement "{{ event.title }}" a été reçue et est actuellement en attente de validation par l'organisateur.
+
+Détails de l'événement :
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+- Prix : {{ event.price }} $US
+
+Statut actuel :
+Votre inscription est en liste d'attente. L'organisateur de l'événement examinera votre demande et vous informera de la suite.
+
+Que se passe-t-il maintenant ?
+- L'organisateur examine votre inscription
+- Vous recevrez un email de confirmation ou de rejet
+- En cas de confirmation, vous recevrez votre billet QR code
+
+Nous vous tiendrons informé de l'évolution de votre demande.
+
+Cordialement,
+L'équipe de gestion d'événements
+
+---
+Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+
+

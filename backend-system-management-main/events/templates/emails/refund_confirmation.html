@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .container { max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; }
+        .success { background-color: #28a745; color: white; padding: 15px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .details { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .amount { color: #28a745; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+        
+        <div class="success">
+            <h2>✅ REMBOURSEMENT CONFIRMÉ</h2>
+        </div>
+        
+        <p>Votre demande de remboursement pour l'événement <strong>{{ event.title }}</strong> a été traitée avec succès.</p>
+        
+        <div class="details">
+            <h3>💰 Détails du remboursement :</h3>
+            <ul>
+                <li><strong>Montant remboursé :</strong> <span class="amount">{{ refund_amount }}€</span></li>
+                <li><strong>Pourcentage :</strong> {{ refund_request.refund_percentage }}%</li>
+                <li><strong>Référence Stripe :</strong> {{ refund_request.stripe_refund_id }}</li>
+            </ul>
+        </div>
+        
+        <p>Le remboursement apparaîtra sur votre moyen de paiement original sous <strong>3-5 jours ouvrés</strong>.</p>
+        
+        <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
+        
+        <p>Cordialement,<br><em>L'équipe organisation</em></p>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

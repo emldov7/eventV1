@@ -1,0 +1,17 @@
+❌ Inscription rejetée
+
+Bonjour {{ user.first_name|default:user.username }},
+
+Nous regrettons de vous informer que votre inscription en liste d'attente pour l'événement "{{ event.title }}" a été rejetée par l'organisateur.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date prévue : {{ event.start_date|date:"j F Y à H:i" }}
+- Lieu : {{ event.location }}
+
+Si vous avez des questions concernant cette décision, n'hésitez pas à contacter directement l'organisateur de l'événement.
+
+Nous vous remercions de votre compréhension.
+
+Cordialement,
+L'équipe Gestion d'Événements

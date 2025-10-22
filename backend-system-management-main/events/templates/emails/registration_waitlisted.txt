@@ -1,0 +1,19 @@
+Bonjour {{ user.first_name|default:user.username }},
+
+Votre inscription à l'événement "{{ event.title }}" a été reçue et est actuellement en attente de validation.
+
+Détails de l'événement :
+- Titre : {{ event.title }}
+- Date : {{ event.start_date|date:"d/m/Y à H:i" }}
+- Lieu : {{ event.location }}
+- Prix : {{ event.price|floatformat:2 }}€
+
+Votre paiement a été traité avec succès. Votre inscription sera validée par l'organisateur dans les plus brefs délais.
+
+Vous recevrez un email de confirmation avec votre billet (QR code) une fois votre inscription approuvée.
+
+En cas de questions, n'hésitez pas à contacter l'organisateur.
+
+Cordialement,
+L'équipe de gestion des événements
+

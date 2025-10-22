@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inscription en attente - {{ event.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .content { background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .event-details { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .status { background-color: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; border: 1px solid #ffeaa7; margin: 15px 0; }
+        .footer { margin-top: 20px; padding: 15px; text-align: center; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>🕒 Inscription en attente de validation</h2>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>Votre inscription à l'événement "<strong>{{ event.title }}</strong>" a été reçue et est actuellement <strong>en attente de validation</strong>.</p>
+            
+            <div class="status">
+                <strong>📋 Statut :</strong> En attente de validation par l'organisateur
+            </div>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement</h3>
+                <ul>
+                    <li><strong>Titre :</strong> {{ event.title }}</li>
+                    <li><strong>Date :</strong> {{ event.start_date|date:"d/m/Y à H:i" }}</li>
+                    <li><strong>Lieu :</strong> {{ event.location }}</li>
+                    <li><strong>Prix :</strong> {{ event.price|floatformat:2 }}€</li>
+                </ul>
+            </div>
+            
+            <p>✅ <strong>Votre paiement a été traité avec succès.</strong></p>
+            
+            <p>Votre inscription sera validée par l'organisateur dans les plus brefs délais. Vous recevrez un email de confirmation avec votre billet (QR code) une fois votre inscription approuvée.</p>
+            
+            <p>En cas de questions, n'hésitez pas à contacter l'organisateur.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Cordialement,<br>L'équipe de gestion des événements</p>
+        </div>
+    </div>
+</body>
+</html>
+

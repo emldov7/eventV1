@@ -1,0 +1,8 @@
+<p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+<p>Petit rappel: l'événement <strong>{{ event.title }}</strong> aura lieu demain.</p>
+<p>
+  Date: {{ event.start_date|date:"Y-m-d H:i" }}<br/>
+  Lieu: {{ event.location }}
+</p>
+<p>À demain !</p>
+

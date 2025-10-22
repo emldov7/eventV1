@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription annulée</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #dc3545; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .event-details { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #dc3545; }
+        .footer { text-align: center; color: #666; margin-top: 20px; font-size: 12px; }
+        .icon { font-size: 48px; margin-bottom: 10px; }
+        .refund-info { background-color: #d1ecf1; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">❌</div>
+            <h1>Inscription annulée</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ user.first_name|default:user.username }}</strong>,</p>
+            
+            <p>Votre inscription à l'événement <strong>"{{ event.title }}"</strong> a été annulée avec succès.</p>
+            
+            <div class="event-details">
+                <h3>📅 Détails de l'événement :</h3>
+                <ul>
+                    <li><strong>Titre :</strong> {{ event.title }}</li>
+                    <li><strong>Date prévue :</strong> {{ event.start_date|date:"j F Y à H:i" }}</li>
+                    <li><strong>Lieu :</strong> {{ event.location }}</li>
+                </ul>
+            </div>
+            
+            {% if refund_amount %}
+            <div class="refund-info">
+                <h4 style="margin-top: 0; color: #0c5460;">💰 Remboursement</h4>
+                <p><strong>Montant remboursé : {{ refund_amount }}€</strong></p>
+                <p>Le remboursement sera traité dans les plus brefs délais selon les modalités de votre banque.</p>
+            </div>
+            {% endif %}
+            
+            <p>Si vous aviez des questions ou souhaitez vous réinscrire, n'hésitez pas à nous contacter.</p>
+            
+            <p>Cordialement,<br>
+            <strong>L'équipe Gestion d'Événements</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>Cet email confirme l'annulation de votre inscription.</p>
+        </div>
+    </div>
+</body>
+</html>

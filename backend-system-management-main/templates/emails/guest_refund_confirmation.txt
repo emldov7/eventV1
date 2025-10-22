@@ -1,0 +1,29 @@
+Remboursement confirmé
+
+Bonjour {{ guest_full_name }},
+
+Votre demande de remboursement pour l'événement "{{ event.title }}" a été traitée avec succès.
+
+Détails du remboursement :
+- Événement : {{ event.title }}
+- Montant remboursé : {{ refund_amount }}€
+- Date de traitement : {{ refund_request.processed_at|date:"j F Y à H:i" }}
+
+Le remboursement sera crédité sur votre compte bancaire dans les 5 à 10 jours ouvrés selon votre banque.
+
+Si vous avez des questions, contactez l'organisateur de l'événement.
+
+Cordialement,
+L'équipe Gestion d'Événements
+
+
+
+
+
+
+
+
+
+
+
+

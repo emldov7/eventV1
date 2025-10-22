@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événement Annulé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff9800;
+        }
+        .cancel-icon {
+            font-size: 48px;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .event-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .cancellation-info {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="cancel-icon">⚠️</div>
+            <h1 style="color: #ff9800;">Événement Annulé</h1>
+        </div>
+        
+        <div class="content">
+            <p>Bonjour <strong>{{ guest_full_name }},</strong></p>
+            
+            <p>Nous regrettons de vous informer que l'événement auquel vous étiez inscrit a été <strong>annulé</strong>.</p>
+            
+            <div class="event-details">
+                <h3>Détails de l'événement :</h3>
+                <p><strong>Titre :</strong> {{ event.title }}</p>
+                <p><strong>Date prévue :</strong> {{ event.start_date|date:"d/m/Y H:i" }}</p>
+                <p><strong>Lieu :</strong> {{ event.location|default:"Non spécifié" }}</p>
+                <p><strong>Organisateur :</strong> {{ event.organizer.username }}</p>
+            </div>
+            
+            <div class="cancellation-info">
+                <h3>Informations importantes :</h3>
+                <p><strong>Raison de l'annulation :</strong> {{ reason }}</p>
+                <p><strong>Date d'annulation :</strong> {{ cancellation_date|date:"d/m/Y H:i" }}</p>
+            </div>
+            
+            <p><strong>Que se passe-t-il maintenant ?</strong></p>
+            
+            <ul>
+                <li>Votre inscription est automatiquement annulée</li>
+                <li>Si vous avez payé, un remboursement sera traité automatiquement</li>
+                <li>Vous recevrez une confirmation de remboursement par email</li>
+                <li>Vous pouvez consulter d'autres événements sur notre plateforme</li>
+            </ul>
+            
+            <div style="text-align: center;">
+                <a href="#" class="button">Voir d'autres événements</a>
+            </div>
+            
+            <p>Nous nous excusons pour ce désagrément et vous remercions de votre compréhension.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Cordialement,<br><strong>Équipe de gestion des événements</strong></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
