@@ -229,9 +229,9 @@ STREAMING_PLATFORMS = {
 # Configuration Twilio (optionnel)
 TWILIO_ENABLED = True  # ✅ ACTIVÉ !
 # 🎯 CORRECTION : Vraies credentials Twilio trouvées !
-TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='AC27323f013d72814616c5f90dc139391d')
-TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='fcd47dcc072d971b7413ffc85d104f40')
-TWILIO_FROM_NUMBER = config('TWILIO_FROM_NUMBER', default='+16013657741')
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='')
+TWILIO_FROM_NUMBER = config('TWILIO_FROM_NUMBER', default='')
 
 # ===== CONFIGURATION CELERY =====
 # 🎯 Configuration simple avec base de données Django
