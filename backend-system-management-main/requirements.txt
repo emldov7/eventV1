@@ -4,15 +4,15 @@
 # Version optimisée pour Railway avec MySQL
 
 # 🏗️ CORE DJANGO (ESSENTIEL)
-Django==4.2.7
-djangorestframework==3.14.0
+Django==4.2.25
+djangorestframework==3.15.2
 django-cors-headers==4.3.0
 django-filter==23.3
 django-filter[rest-framework]==23.3
-PyMySQL==1.1.0
-Pillow==10.1.0
+PyMySQL==1.1.1
+Pillow==10.3.0
 python-decouple==3.8
-djangorestframework-simplejwt==5.3.0
+djangorestframework-simplejwt==5.5.1
 
 # 📦 UTILITAIRES DE BASE (ESSENTIEL)
 python-dateutil>=2.9.0
@@ -20,7 +20,7 @@ qrcode==7.4.2
 stripe==6.7.0
 
 # 🎥 APIS DE STREAMING (ESSENTIEL)
-requests==2.31.0
+requests==2.32.4
 
 # 🔐 AUTHENTIFICATION SOCIALE (ESSENTIEL)
 django-allauth==0.60.1
@@ -45,7 +45,7 @@ django-celery-results==2.5.1
 redis==5.0.1
 
 # 🚀 PRODUCTION RAILWAY - MYSQL (ESSENTIEL)
-gunicorn==21.2.0
+gunicorn==22.0.0
 whitenoise==6.6.0
 # MySQL pour Railway - PyMySQL est plus simple et compatible
 # mysqlclient==2.2.4  # Problème de compilation sur Railway
